@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clarity Room - Calm Visualization Demo</title>
+    <meta
+      name="description"
+      content="A calming browser-based visualization experience for creative clarity, gentle affirmations, and safe reflection."
+    >
+    <link rel="preload" href="assets/hero.png" as="image">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#journey">Skip to guided journey</a>
+
+    <header class="site-header" aria-label="Clarity Room header">
+      <a class="brand" href="#arrival" aria-label="Clarity Room home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>
+          <span class="brand-name">Clarity Room</span>
+          <span class="brand-tagline">A quiet space for calm, safety, and creative clarity.</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#arrival">Begin</a>
+        <a href="#journey">Journey</a>
+        <a href="#vision-board">Vision Board</a>
+        <a href="#affirmations">Affirmations</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section-band" id="arrival" aria-labelledby="arrival-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Waiting-Room VR Prototype</p>
+          <h1 id="arrival-title">Settle into a calmer, clearer space.</h1>
+          <p class="hero-body">
+            Step into a gentle visual experience designed to support calm, safety, and creative clarity.
+            Move through grounding prompts, soothing affirmations, and a vision-board meditation at your own pace.
+          </p>
+          <div class="hero-actions" aria-label="Start options">
+            <button class="button button-primary" type="button" data-scroll-target="journey">
+              Begin the Journey
+            </button>
+            <button class="button button-secondary" type="button" data-scroll-target="vision-board">
+              Preview Vision Themes
+            </button>
+          </div>
+          <p class="helper-text">No headset is required. You can use this experience in your browser.</p>
+        </div>
+
+        <figure class="hero-visual">
+          <img
+            src="assets/hero.png"
+            alt="Soft abstract room of light for a calming visualization experience."
+            width="1600"
+            height="1000"
+          >
+          <figcaption>Immersive calm visualization preview</figcaption>
+        </figure>
+      </section>
+
+      <section class="ambient-stage section-band" aria-label="Browser VR-style ambient space">
+        <div class="stage-shell" id="ambient-stage" data-motion="playing">
+          <div class="stage-sky" aria-hidden="true">
+            <span class="particle particle-one"></span>
+            <span class="particle particle-two"></span>
+            <span class="particle particle-three"></span>
+            <span class="horizon-ring"></span>
+            <span class="breath-orb"></span>
+          </div>
+          <div class="stage-copy">
+            <p class="section-label">Ambient Space</p>
+            <h2>A soft horizon for reflection.</h2>
+            <p>
+              Let your attention rest with the horizon. You can pause the movement at any time and
+              continue at your own pace.
+            </p>
+            <button class="button button-quiet" type="button" id="motion-toggle" aria-pressed="false">
+              Pause Motion
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="journey section-band" id="journey" aria-labelledby="journey-title">
+        <div class="section-heading">
+          <p class="section-label">Guided Journey</p>
+          <h2 id="journey-title">Follow each prompt slowly.</h2>
+          <p>You can move forward when you feel ready.</p>
+        </div>
+
+        <div class="journey-layout">
+          <article class="session-panel" aria-live="polite" aria-labelledby="step-title">
+            <div class="step-meta">
+              <span id="step-progress">Step 1 of 8</span>
+              <span id="step-category">Safe Arrival</span>
+            </div>
+            <h3 id="step-title">Arrive Gently</h3>
+            <p class="prompt" id="step-prompt">
+              You are invited to settle into this quiet space. There is nothing to solve right now.
+            </p>
+            <blockquote id="step-affirmation">I am allowed to arrive exactly as I am.</blockquote>
+            <p class="visual-direction">
+              <strong>Visual direction:</strong>
+              <span id="step-visual-direction">Soft ambient light, slow-moving particles, spacious horizon, low contrast.</span>
+            </p>
+          </article>
+
+          <div class="session-controls" aria-label="Guided session controls">
+            <button class="button button-secondary" type="button" id="previous-step">Previous</button>
+            <button class="button button-primary" type="button" id="next-step">Next</button>
+            <button class="button button-quiet" type="button" id="restart-journey">Begin Again</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="vision-board section-band" id="vision-board" aria-labelledby="vision-title">
+        <div class="section-heading">
+          <p class="section-label">Vision Board</p>
+          <h2 id="vision-title">Choose a supportive visual direction.</h2>
+          <p>
+            Select a theme that feels calm, safe, or creatively clear. Let the image become a gentle
+            reminder of what you are moving toward.
+          </p>
+        </div>
+
+        <div class="vision-layout">
+          <div class="theme-grid" id="theme-grid" aria-label="Vision-board themes"></div>
+
+          <aside class="preview-panel" aria-labelledby="selected-theme-label">
+            <img
+              src="assets/vision-board.png"
+              alt="Floating abstract cards and colors representing a reflective vision board."
+              width="1200"
+              height="900"
+            >
+            <div class="preview-copy">
+              <p class="section-label" id="selected-theme-label">Selected Theme</p>
+              <h3 id="selected-theme-name">Soft Morning Light</h3>
+              <p class="preview-label">Visualization Preview</p>
+              <p id="selected-theme-prompt">
+                A peaceful room filled with warm morning light, soft textures, clear space, and a feeling of new possibility.
+              </p>
+              <p class="preview-label">Supportive Feeling</p>
+              <p id="selected-theme-feeling">Freshness, openness, gentle momentum</p>
+              <button class="button button-primary" type="button" id="preview-visual">Preview Visual</button>
+              <p class="helper-text" id="preview-note">
+                Your selections stay in this preview. The prompt is offered for reflection only.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="affirmations section-band" id="affirmations" aria-labelledby="affirmations-title">
+        <div class="section-heading">
+          <p class="section-label">Affirmations</p>
+          <h2 id="affirmations-title">Carry one steady phrase with you.</h2>
+          <p>Choose an affirmation that feels believable and supportive right now.</p>
+        </div>
+
+        <div class="affirmation-layout">
+          <figure class="orb-visual">
+            <img
+              src="assets/affirmation-orb.png"
+              alt="Soft glowing orb representing a steady affirmation."
+              width="1024"
+              height="1024"
+            >
+          </figure>
+          <div>
+            <article class="chosen-affirmation" aria-live="polite">
+              <p class="section-label">Selected Affirmation</p>
+              <blockquote id="chosen-affirmation">I am safe enough to soften.</blockquote>
+            </article>
+            <div class="affirmation-grid" id="affirmation-grid" aria-label="Affirmation choices"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing section-band" id="closing" aria-labelledby="closing-title">
+        <div class="closing-copy">
+          <p class="section-label">Gentle Close</p>
+          <h2 id="closing-title">Carry the calm forward.</h2>
+          <p>
+            Take one word, image, or feeling with you. You can return to this quiet space whenever you
+            need a moment of clarity.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-primary" type="button" id="begin-again">Begin Again</button>
+            <button class="button button-secondary" type="button" data-scroll-target="vision-board">
+              Return to Vision Board
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <p>Clarity Room supports reflection at your own pace.</p>
+    </footer>
+
+    <script src="src/data.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+</html>

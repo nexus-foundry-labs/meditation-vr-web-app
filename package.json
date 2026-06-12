@@ -1,0 +1,9 @@
+{
+  "name": "meditation-vr-web-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static Clarity Room browser meditation and vision-board preview.",
+  "scripts": {
+    "test": "node tests/smoke.test.js"
+  }
+}
