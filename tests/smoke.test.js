@@ -78,8 +78,14 @@ function assertAppSurface() {
   ["assets/hero.png", "assets/vision-board.png", "assets/affirmation-orb.png", "assets/brand-mark.png"].forEach((file) => {
     const stat = fs.statSync(path.join(root, file));
     assert.ok(stat.size > 1000, `${file} exists and is not blank`);
-    assert.ok(html.includes(file), `${file} is referenced in HTML`);
   });
+
+  // Imagery is embedded as inline data URIs (not external asset paths) so the
+  // page renders in preview environments that do not serve separate binary
+  // files. The source PNGs above are retained as the editable originals.
+  assert.equal(html.includes("assets/"), false, "HTML uses inlined images, not external asset paths");
+  const inlinedImages = (html.match(/src="data:image\//g) || []).length;
+  assert.ok(inlinedImages >= 5, "all imagery is embedded as inline data URIs");
 
   [
     "begin-journey",
