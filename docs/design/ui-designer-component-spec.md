@@ -1,68 +1,99 @@
-# UI Designer Component Specification — Meditation VR Web App
+# UI Designer Component Specification — Clarity Room
 
-## Purpose
+## Project
+Meditation VR Web App — deployable static browser prototype
 
-This document defines the initial UI component patterns for the static browser prototype. The interface should feel calm, safe, and creatively clarifying while remaining practical for a waiting-room demo.
+## Role
+UI Designer reporting to Design Lead
 
-## Page Anatomy
+## Emotional Target
+The interface should create an immediate sense of:
 
-Recommended page sections:
+- Creative clarity
+- Calm
+- Safety
+- Gentle hope
+- Spaciousness without pressure
 
-1. Header
-2. Hero arrival
-3. Guided session controls
-4. Ambient scene panel
-5. Vision board prompt area
-6. Affirmation close
-7. Footer / safety note
+The experience must feel supportive and non-clinical. It should be appropriate for a waiting-room demo where users may be distracted, nervous, or new to guided visualization.
 
-## Header
+---
 
-### Content
-- Small brand mark using `assets/brand-mark.png`
-- App name
-- Optional short status chip: “Gentle session”
+## Design Principles
 
-### Behavior
-- Header links should use hash anchors or in-page scroll behavior only.
-- Avoid external navigation in the preview unless specifically required.
+### 1. Quiet First Impression
+The first screen should reduce cognitive load. Use a single clear headline, one primary action, and a soft visual anchor.
 
-### Visual
-- Transparent or soft-glass header
-- Sticky header is acceptable if subtle
-- Minimum 16px side padding on mobile
+### 2. Spacious Visual Hierarchy
+Avoid dense panels or dashboard-like complexity. Use generous spacing, rounded surfaces, and short text blocks.
 
-## Hero Arrival Component
+### 3. Safe, Non-Clinical Tone
+The UI should not resemble a medical intake flow, diagnosis tool, or therapy portal. Avoid harsh whites, sterile blues, alert colors, and form-heavy patterns.
 
-### Required Content
-- Main headline
-- Short supportive description
-- Primary action button
-- Secondary action button
-- Hero image using `assets/hero.png`
+### 4. Guided, Not Forced
+The user should always feel able to move forward, pause, or revisit previous steps. Avoid urgency language.
 
-### Suggested Copy
-Headline:
-> A calm space for creative clarity.
+### 5. Preview-Safe Navigation
+All controls must remain inside the preview app. Buttons should use in-page actions, hash navigation, or JavaScript state updates. Do not use parent/top/window navigation.
 
-Description:
-> Move through a gentle guided session designed to help you arrive, breathe, imagine, and leave with one steady affirmation.
+---
 
-Primary action:
-> Begin gentle session
+## Recommended App Structure
 
-Secondary action:
-> Preview the space
+### Main Sections
 
-### States
-- Default
-- Hover
-- Focus-visible
-- Active/pressed
+1. **Arrival / Hero**
+   - Introduces Clarity Room.
+   - Provides primary “Begin” button.
+   - Shows calming hero illustration.
+   - Sets expectation for a short guided experience.
 
-## Guided Affirmation Sequence
+2. **Guided Journey**
+   - Displays the current meditation step.
+   - Includes title, category, prompt, affirmation, and ambient scene cue.
+   - Provides previous/next controls and progress indication.
 
-### Data Model Recommendation
+3. **Vision Board**
+   - Presents selectable visualization themes.
+   - Shows theme cards with gentle imagery, color swatches, and reflection prompts.
+   - Includes a “Generate Reflection Visual” or “Preview Visual” button that updates content in-app.
 
-The app should use structured local data for affirmation steps. Suggested minimum sequence:
+4. **Affirmations**
+   - Offers short, believable affirmations.
+   - Uses card carousel or stacked cards.
+   - Allows users to select or cycle affirmations without leaving the page.
+
+5. **Grounding Close**
+   - Ends with a soft summary state.
+   - Encourages the user to carry one clear image or phrase with them.
+   - Does not make clinical promises.
+
+---
+
+## Visual System
+
+### Color Palette
+
+| Token | Suggested Value | Usage |
+|---|---:|---|
+| `--color-ink` | `#172326` | Primary text |
+| `--color-muted` | `#5F7074` | Secondary text |
+| `--color-cloud` | `#F6F2EA` | Page background |
+| `--color-mist` | `#E8F0EC` | Soft panels |
+| `--color-sage` | `#91AAA0` | Accent surfaces |
+| `--color-dawn` | `#F4CFA8` | Warm highlight |
+| `--color-lavender` | `#CFC8E8` | Creative clarity accent |
+| `--color-sky` | `#B9DDE4` | Ambient glow |
+| `--color-deep-teal` | `#24484D` | Primary button |
+| `--color-focus` | `#7C68C9` | Keyboard focus ring |
+
+### Color Guidance
+- Use warm off-white instead of stark white.
+- Primary action should be deep teal with high contrast.
+- Use dawn peach and lavender as subtle glow accents.
+- Avoid saturated red unless used for inaccessible error states, which are not expected in this prototype.
+
+### Typography
+
+Recommended system font stack:
 
