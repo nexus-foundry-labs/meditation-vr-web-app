@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A calming browser-based visualization experience for creative clarity, gentle affirmations, and safe reflection."
+    >
+    <title>Clarity Room - Calm Visualization Demo</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#journey">Skip to guided journey</a>
+
+    <main class="app-shell" id="app">
+      <section class="scene-panel" id="arrival" aria-label="Clarity Room ambient visualization">
+        <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+        <header class="app-header">
+          <div>
+            <p class="eyebrow">Waiting-Room VR Prototype</p>
+            <h1>Clarity Room</h1>
+            <p class="tagline">A quiet space for calm, safety, and creative clarity.</p>
+          </div>
+
+          <nav class="nav-controls" aria-label="Primary">
+            <button type="button" data-scroll-target="journey">Begin</button>
+            <button type="button" data-scroll-target="vision-board">Vision Board</button>
+            <button type="button" data-scroll-target="affirmations">Affirmations</button>
+          </nav>
+        </header>
+
+        <div class="arrival-copy">
+          <p class="section-label">Safe Arrival</p>
+          <h2>Settle into a calmer, clearer space.</h2>
+          <p>
+            Step into a gentle visual experience designed to support calm, safety, and creative clarity.
+            Move through grounding prompts, soothing affirmations, and a vision-board meditation at your own pace.
+          </p>
+        </div>
+
+        <div class="scene-status" aria-live="polite">
+          <span id="scene-word">calm</span>
+          <span id="scene-category">Safe Arrival</span>
+        </div>
+
+        <div class="stage-actions" aria-label="Experience controls">
+          <button class="primary-action" type="button" data-start-journey>Start Guided Reset</button>
+          <button type="button" data-scroll-target="vision-board">Preview Vision Themes</button>
+          <button type="button" id="motion-toggle">Pause Motion</button>
+          <button type="button" id="immersive-toggle">Enter Immersive View</button>
+        </div>
+
+        <p class="helper-text">
+          No headset is required. The preview stays inside this browser experience.
+        </p>
+      </section>
+
+      <section class="control-surface" aria-label="Meditation controls and content">
+        <section class="surface-block guided-block" id="journey" tabindex="-1">
+          <div class="block-heading">
+            <div>
+              <p class="section-label">Guided Journey</p>
+              <h2>Follow each prompt slowly.</h2>
+            </div>
+            <p class="progress-pill" id="step-progress">Step 1 of 8</p>
+          </div>
+
+          <p class="intro-text">You can move forward when you feel ready.</p>
+
+          <article class="prompt-panel" aria-live="polite">
+            <p class="category-label" id="step-category">Safe Arrival</p>
+            <h3 id="step-title">Arrive Gently</h3>
+            <p id="step-prompt"></p>
+            <p class="affirmation-line" id="step-affirmation"></p>
+            <p class="visual-direction" id="step-visual"></p>
+          </article>
+
+          <div class="control-row">
+            <button type="button" id="previous-step">Previous</button>
+            <button type="button" class="primary-action" id="next-step">Next</button>
+          </div>
+        </section>
+
+        <section class="surface-block vision-block" id="vision-board" tabindex="-1">
+          <div class="block-heading">
+            <div>
+              <p class="section-label">Vision Board</p>
+              <h2>Choose a supportive visual direction.</h2>
+            </div>
+            <p class="progress-pill" id="active-theme-label">Selected Theme</p>
+          </div>
+
+          <p class="intro-text">
+            Select a theme that feels calm, safe, or creatively clear. Let the image become a gentle
+            reminder of what you are moving toward.
+          </p>
+
+          <div class="vision-layout">
+            <div class="theme-list" id="theme-list" aria-label="Vision-board themes"></div>
+
+            <article class="preview-panel" aria-live="polite">
+              <div class="preview-header">
+                <div>
+                  <p class="category-label">Visualization Preview</p>
+                  <h3 id="theme-name">Soft Morning Light</h3>
+                </div>
+              </div>
+              <canvas id="preview-canvas" aria-label="Selected visualization preview"></canvas>
+              <div class="theme-copy">
+                <p class="copy-label">Image Prompt</p>
+                <p id="theme-prompt"></p>
+                <p class="copy-label">Supportive Feeling</p>
+                <p id="theme-feeling"></p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="surface-block affirmation-block" id="affirmations" tabindex="-1">
+          <div class="block-heading">
+            <div>
+              <p class="section-label">Affirmations</p>
+              <h2>Carry one steady phrase with you.</h2>
+            </div>
+          </div>
+
+          <p class="intro-text">Choose an affirmation that feels believable and supportive right now.</p>
+          <div class="affirmation-list" id="affirmation-list" aria-label="Affirmation choices"></div>
+          <p class="selected-affirmation" id="selected-affirmation" aria-live="polite"></p>
+        </section>
+
+        <section class="surface-block closing-block" id="closing" tabindex="-1">
+          <p class="section-label">Closing</p>
+          <h2>Carry the calm forward.</h2>
+          <p>
+            Take one word, image, or feeling with you. You can return to this quiet space whenever
+            you need a moment of clarity.
+          </p>
+          <div class="control-row">
+            <button class="primary-action" type="button" data-begin-again>Begin Again</button>
+            <button type="button" data-scroll-target="vision-board">Return to Vision Board</button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="src/content.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+</html>
