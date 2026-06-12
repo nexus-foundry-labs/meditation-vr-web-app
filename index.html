@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A calming browser-based visualization experience for creative clarity, gentle affirmations, and safe reflection."
+    >
+    <title>Clarity Room - Calm Visualization Demo</title>
+    <link rel="preload" href="assets/hero.png" as="image">
+    <link rel="stylesheet" href="styles.css">
+    <script src="src/content.js" defer></script>
+    <script src="src/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#journey">Skip to guided journey</a>
+
+    <header class="site-header" aria-label="Primary">
+      <a class="brand" href="#arrival" data-nav-link>
+        <img src="assets/brand-mark.png" alt="Clarity Room abstract horizon mark." width="42" height="42">
+        <span>
+          <strong>Clarity Room</strong>
+          <small>A quiet space for calm, safety, and creative clarity.</small>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#arrival" data-nav-link>Begin</a>
+        <a href="#journey" data-nav-link>Journey</a>
+        <a href="#vision-board" data-nav-link>Vision Board</a>
+        <a href="#affirmations" data-nav-link>Affirmations</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="arrival" id="arrival" aria-labelledby="arrival-title">
+        <img
+          class="arrival-image"
+          src="assets/hero.png"
+          alt="Soft abstract room of light for a calming visualization experience."
+        >
+        <div class="arrival-shade" aria-hidden="true"></div>
+        <div class="arrival-content">
+          <p class="eyebrow">Waiting-Room VR Prototype</p>
+          <h1 id="arrival-title">Settle into a calmer, clearer space.</h1>
+          <p>
+            Step into a gentle visual experience designed to support calm, safety,
+            and creative clarity. Move through grounding prompts, soothing
+            affirmations, and a vision-board meditation at your own pace.
+          </p>
+          <div class="action-row">
+            <button class="button button-primary" type="button" data-action="begin-journey">
+              Begin the Journey
+            </button>
+            <button class="button button-secondary" type="button" data-action="preview-themes">
+              Preview Vision Themes
+            </button>
+          </div>
+          <p class="helper-text">No headset is required. You can use this experience in your browser.</p>
+        </div>
+      </section>
+
+      <section class="section-band section-band-light" id="journey" aria-labelledby="journey-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <p class="section-label">Guided Journey</p>
+            <h2 id="journey-title">Follow each prompt slowly.</h2>
+            <p>You can move forward when you feel ready.</p>
+          </div>
+
+          <div class="state-message" id="journey-loading" role="status">Preparing guided journey...</div>
+          <div class="state-message" id="journey-empty" hidden>No guided steps are available right now.</div>
+          <div class="state-message state-error" id="journey-error" hidden>
+            Guided content could not be prepared. Begin again to refresh the view.
+          </div>
+
+          <div class="journey-layout" id="journey-experience" hidden>
+            <article class="ambient-stage" aria-live="polite">
+              <div class="stage-sky" aria-hidden="true">
+                <span class="particle particle-one"></span>
+                <span class="particle particle-two"></span>
+                <span class="particle particle-three"></span>
+                <span class="breath-orb"></span>
+                <span class="horizon-line"></span>
+              </div>
+              <p class="step-category" id="step-category"></p>
+              <h3 id="step-title"></h3>
+              <p class="step-prompt" id="step-prompt"></p>
+              <p class="step-affirmation" id="step-affirmation"></p>
+              <p class="visual-direction" id="step-visual"></p>
+            </article>
+
+            <aside class="control-surface" aria-label="Session controls">
+              <p class="progress-text" id="step-progress">Step 1 of 8</p>
+              <div class="progress-track" aria-hidden="true">
+                <span id="step-progress-bar"></span>
+              </div>
+              <div class="control-grid">
+                <button class="button button-secondary" type="button" data-action="previous-step">Previous</button>
+                <button class="button button-primary" type="button" data-action="next-step">Next</button>
+                <button class="button button-secondary" type="button" data-action="restart-journey">Begin Again</button>
+                <button class="button button-secondary" type="button" data-action="toggle-motion">Pause Motion</button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band" id="vision-board" aria-labelledby="vision-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <p class="section-label">Vision Board</p>
+            <h2 id="vision-title">Choose a supportive visual direction.</h2>
+            <p>
+              Select a theme that feels calm, safe, or creatively clear. Let the
+              image become a gentle reminder of what you are moving toward.
+            </p>
+          </div>
+
+          <div class="state-message" id="vision-loading" role="status">Preparing vision themes...</div>
+          <div class="state-message" id="vision-empty" hidden>No vision themes are available right now.</div>
+          <div class="state-message state-error" id="vision-error" hidden>
+            Vision themes could not be prepared. Begin again to refresh the view.
+          </div>
+
+          <div class="vision-layout" id="vision-content" hidden>
+            <div class="theme-list" id="theme-list" aria-label="Vision-board themes"></div>
+
+            <article class="selected-theme" aria-live="polite">
+              <div class="media-frame">
+                <img
+                  src="assets/vision-board.png"
+                  alt="Floating abstract cards and colors representing a reflective vision board."
+                >
+              </div>
+              <p class="section-label">Selected Theme</p>
+              <h3 id="theme-name"></h3>
+              <p id="theme-prompt"></p>
+              <dl class="theme-details">
+                <div>
+                  <dt>Supportive Feeling</dt>
+                  <dd id="theme-feeling"></dd>
+                </div>
+                <div>
+                  <dt>Image Prompt</dt>
+                  <dd id="theme-image-prompt"></dd>
+                </div>
+              </dl>
+              <ul class="preview-units" id="theme-preview-units" aria-label="Theme preview cues"></ul>
+              <div class="action-row">
+                <button class="button button-primary" type="button" data-action="generate-visual">
+                  Generate Reflection Visual
+                </button>
+                <button class="button button-secondary" type="button" data-action="go-provider">
+                  Connect your AI provider
+                </button>
+              </div>
+
+              <div class="ai-state" id="ai-required" hidden>
+                <strong>Connect your AI provider.</strong>
+                <span>Add your provider key before generating a new visualization.</span>
+                <button class="text-button" type="button" data-action="go-provider">Open connection screen</button>
+              </div>
+              <div class="ai-state" id="generated-loading" hidden role="status">
+                Creating a calm visual preview...
+              </div>
+              <div class="ai-state state-error" id="ai-error" hidden>
+                <strong id="ai-error-title">The visual could not be created.</strong>
+                <span id="ai-error-message">Review your connection and try again.</span>
+                <div class="inline-actions">
+                  <button class="text-button" type="button" data-action="retry-generate">Retry</button>
+                  <button class="text-button" type="button" data-action="go-provider">Review connection</button>
+                </div>
+              </div>
+              <figure class="generated-preview" id="generated-output" hidden>
+                <img id="generated-image" alt="Generated calming visualization preview.">
+                <figcaption id="generated-caption">Visualization Preview</figcaption>
+              </figure>
+              <div class="ai-state" id="generated-empty">
+                Choose a theme to preview its prompt before creating a new visual.
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band section-band-light" id="connect-provider" aria-labelledby="provider-title">
+        <div class="section-shell provider-layout">
+          <div class="section-heading">
+            <p class="section-label">AI Provider</p>
+            <h2 id="provider-title">Connect your AI provider.</h2>
+            <p>
+              Add an OpenAI API key to test the connection before creating a new
+              visualization. The key stays in this browser's local storage.
+            </p>
+          </div>
+
+          <form class="provider-form" id="provider-form" novalidate>
+            <div class="field">
+              <label for="provider-key">OpenAI API key</label>
+              <input
+                id="provider-key"
+                name="provider-key"
+                type="password"
+                autocomplete="off"
+                autocapitalize="none"
+                spellcheck="false"
+                aria-describedby="provider-help provider-status"
+              >
+              <p id="provider-help">Use a key from your provider account. It is read only when you test or generate.</p>
+            </div>
+            <div class="action-row">
+              <button class="button button-primary" type="submit">Test connection</button>
+              <button class="button button-secondary" type="button" data-action="forget-key">Forget saved key</button>
+            </div>
+            <p class="provider-status" id="provider-status" role="status">No provider key is connected.</p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section-band" id="affirmations" aria-labelledby="affirmations-title">
+        <div class="section-shell affirmations-layout">
+          <div class="section-heading">
+            <p class="section-label">Affirmations</p>
+            <h2 id="affirmations-title">Carry one steady phrase with you.</h2>
+            <p>Choose an affirmation that feels believable and supportive right now.</p>
+          </div>
+
+          <div class="state-message" id="affirmations-loading" role="status">Preparing affirmations...</div>
+          <div class="state-message" id="affirmations-empty" hidden>No affirmations are available right now.</div>
+          <div class="state-message state-error" id="affirmations-error" hidden>
+            Affirmations could not be prepared. Begin again to refresh the view.
+          </div>
+
+          <div class="affirmation-content" id="affirmation-content" hidden>
+            <div class="affirmation-orb">
+              <img
+                src="assets/affirmation-orb.png"
+                alt="Soft glowing orb representing a steady affirmation."
+              >
+            </div>
+            <div class="affirmation-list" id="affirmation-list" aria-label="Affirmation choices"></div>
+            <p class="selected-affirmation" id="selected-affirmation" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band closing-band" id="closing" aria-labelledby="closing-title">
+        <div class="section-shell closing-layout">
+          <div>
+            <p class="section-label">Grounding Close</p>
+            <h2 id="closing-title">Carry the calm forward.</h2>
+            <p>
+              Take one word, image, or feeling with you. You can return to this
+              quiet space whenever you need a moment of clarity.
+            </p>
+          </div>
+          <form class="closing-form" id="closing-form" novalidate>
+            <label for="carry-word">One word, image, or feeling</label>
+            <input id="carry-word" name="carry-word" type="text" maxlength="40" autocomplete="off">
+            <p class="field-error" id="carry-error" hidden>Use 40 characters or fewer.</p>
+            <div class="action-row">
+              <button class="button button-primary" type="submit">Save Reflection</button>
+              <button class="button button-secondary" type="button" data-action="begin-again">Begin Again</button>
+              <button class="button button-secondary" type="button" data-action="return-vision">
+                Return to Vision Board
+              </button>
+            </div>
+            <p class="saved-word" id="saved-word" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <img src="assets/brand-mark.png" alt="" width="28" height="28">
+      <span>Clarity Room supports reflection, choice, and gentle pacing.</span>
+    </footer>
+  </body>
+</html>

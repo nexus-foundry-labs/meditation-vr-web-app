@@ -1,0 +1,9 @@
+{
+  "name": "clarity-room-static-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deployable static meditation visualization prototype.",
+  "scripts": {
+    "test": "node tests/smoke.test.js"
+  }
+}
